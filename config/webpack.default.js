@@ -30,7 +30,7 @@ module.exports = {
             manifest: require(path.join(root, 'lib/vendor-manifest.json'))
         }),
         new ExtractTextPlugin({
-            filename: '[name].[contenthash].css',
+            filename: '[name].css',
             disable: true,
             ignoreOrder: true,
             allChunks: true
