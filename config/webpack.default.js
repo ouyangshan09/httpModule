@@ -17,11 +17,7 @@ module.exports = {
                     path.join(root, 'node_modules')
                 ],
                 use: ExtractTextPlugin.extract({
-                    use: [
-                        {loader: 'css-loader'},
-                        {loader: 'postcss-loader'},
-                        {loader: 'sass-loader'}
-                    ],
+                    use: ['css-loader', 'postcss-loader', 'sass-loader'],
                     fallback: 'style-loader'
                 })
             },
@@ -32,6 +28,11 @@ module.exports = {
         new webpack.DllReferencePlugin({
             context: root,
             manifest: require(path.join(root, 'lib/vendor-manifest.json'))
+        }),
+        new ExtractTextPlugin({
+            filename: '[name].[contenthash].css',
+            ignoreOrder: true,
+            allChunks: true
         })
     ]
 };
