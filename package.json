@@ -1,0 +1,56 @@
+{
+  "name": "fore-end-starter",
+  "version": "1.0.0",
+  "description": "javascript starter project",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf ./dist/*.* ./dist/*",
+    "start": "node xx.js",
+    "build": "node xx.js",
+    "dll": "node xx.js",
+    "lint": "eslint src & stylelint \"src/**/*.scss\"",
+    "lint:fix": "eslint src --fix & stylefmt -r \"src/**/*.scss\"",
+    "deploy": "node ./scripts/deploy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ouyangshan09/fore-end-starter.git"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Ouyang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ouyangshan09/fore-end-starter/issues"
+  },
+  "homepage": "https://github.com/ouyangshan09/fore-end-starter#readme",
+  "devDependencies": {
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "babel-jest": "^22.4.3",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "immutable": "^3.8.2",
+    "jest": "^22.4.3",
+    "js-cookie": "^2.2.0",
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
+    "lodash": "^4.17.5",
+    "moment": "^2.21.0",
+    "node-sass": "^4.8.3",
+    "postcss-loader": "^2.1.3",
+    "sass-loader": "^6.0.7",
+    "url-loader": "^1.0.1"
+  }
+}
