@@ -12,3 +12,5 @@
 /yarn-error.log
 /bash.exe.stackdump
 /package-lock.json
+/lib
+/dist
