@@ -4,7 +4,7 @@
 /.happypack/
 /.settings/
 /.project
-/.idea/
+/.idea
 /.vscode/
 /.DS_Store/
 /coverage/
