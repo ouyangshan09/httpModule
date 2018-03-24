@@ -31,6 +31,7 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: '[name].[contenthash].css',
+            disable: true,
             ignoreOrder: true,
             allChunks: true
         })
