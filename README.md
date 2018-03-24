@@ -60,7 +60,7 @@ npm run deploy -- -h
 react                   react项目根目录
   ├─config              配置目录
   ├─dist                生产目录
-  ├─libs
+  ├─lib                 第三方依赖库
   ├─node_modules
   ├─scripts             执行脚本目录
   ├─src                 开发目录
@@ -79,7 +79,7 @@ react                   react项目根目录
   ├─.babelrc            babel配置文件
   ├─.eslintignore       eslint忽略配置文件
   ├─.eslintrc.js        eslint配置文件
-  ├─.gitignore
+  ├─.gitignore          文件忽略配置
   ├─.gitlab-ci.yml      gitlab持续集成配置
   ├─.npmrc              npm配置
   ├─.stylelintignore    stylelint忽略配置
@@ -89,8 +89,6 @@ react                   react项目根目录
   ├─package.json
   ├─postcss.config.js   postcss配置文件
   ├─README.md
-  ├─server.js           webpack-dev-server启动脚本
-  └─webpack.config.js
 ```
 
 ### 具备特征
