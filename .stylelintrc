@@ -1,0 +1,14 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "indentation": 4,
+    "selector-list-comma-newline-after": "always-multi-line",
+    "selector-list-comma-space-before": "never",
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["global", "local"]
+    }],
+    "unit-no-unknown": [true, {
+      "ignoreUnits": ["/x/", "string"]
+    }]
+  }
+}
