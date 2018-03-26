@@ -64,18 +64,7 @@ react                   react项目根目录
   ├─node_modules
   ├─scripts             执行脚本目录
   ├─src                 开发目录
-  │   ├─actions
-  │   ├─components
-  │   ├─containers
-  │   ├─core
-  │   ├─public          公共全局资源目录
-  │   ├─reducers
-  │   ├─utils
-  │   ├─view            视图目录
-  │   ├─index.html
-  │   ├─index.js
-  │   └─routes.js
-  ├─tools               工具目录
+  ├─plugin              插件目录
   ├─.babelrc            babel配置文件
   ├─.eslintignore       eslint忽略配置文件
   ├─.eslintrc.js        eslint配置文件
