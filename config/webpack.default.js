@@ -4,6 +4,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const root = path.join(__dirname, '../');
 
@@ -28,6 +29,10 @@ module.exports = {
         new webpack.DllReferencePlugin({
             context: root,
             manifest: require(path.join(root, 'lib/vendor-manifest.json'))
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(root, 'src', 'index.html'),
+            title: 'js-starter'
         }),
         new ExtractTextPlugin({
             filename: '[name].css',
