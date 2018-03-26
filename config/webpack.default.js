@@ -36,7 +36,7 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: '[name].css',
-            disable: true,
+            disable: false,
             ignoreOrder: true,
             allChunks: true
         })
