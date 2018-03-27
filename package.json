@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf ./dist/*.* ./dist/*",
-    "start": "npm run clean && webpack --mode development --config ./config/webpack.default.js",
+    "start": "node ./config/webpack.local.js",
     "build": "node xx.js",
     "dll": "webpack --mode production --config ./config/webpack.dll.js --progress --profile --bail",
     "lint": "eslint src & stylelint \"src/**/*.scss\"",
