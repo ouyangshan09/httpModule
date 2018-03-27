@@ -6,6 +6,9 @@ const webpack = require('webpack');
 const Server = require('webpack-dev-server');
 const webpackMerge = require('webpack-merge');
 const defaultConfig = require('./webpack.default');
+const config = require('./config');
+const opn = require('opn');
+const url = require('url');
 
 const serverConfig = webpackMerge(defaultConfig, {
     mode: 'development',
@@ -26,6 +29,11 @@ const server = new Server(webpack(serverConfig), {
     }
 });
 
-server.listen(80, '127.0.0.1', () => {
+server.listen(config.port, config.host, () => {
     console.log('js-starter is running');
+    opn(url.format({
+        protocol: config.protocol,
+        port: config.port,
+        host: config.host
+    }))
 });
