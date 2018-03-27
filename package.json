@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf ./dist/*.* ./dist/*",
     "start": "node ./config/webpack.local.js",
-    "build": "node xx.js",
+    "build": "npm run clean && node ./config/webpack.prod.js",
     "dll": "webpack --mode production --config ./config/webpack.dll.js --progress --profile --bail",
     "lint": "eslint src & stylelint \"src/**/*.scss\"",
     "lint:fix": "eslint src --fix & stylefmt -r \"src/**/*.scss\"",
