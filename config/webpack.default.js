@@ -5,8 +5,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const root = path.join(__dirname, '../');
+const config = require('./config');
 
 module.exports = {
     module: {
@@ -14,8 +13,8 @@ module.exports = {
             {
                 test: /\.s?([ca])ss$/,
                 exclude: [
-                    path.join(root, 'public'),
-                    path.join(root, 'node_modules')
+                    path.join(config.root, 'public'),
+                    path.join(config.root, 'node_modules')
                 ],
                 use: ExtractTextPlugin.extract({
                     use: ['css-loader', 'postcss-loader', 'sass-loader'],
@@ -27,11 +26,11 @@ module.exports = {
     },
     plugins: [
         new webpack.DllReferencePlugin({
-            context: root,
-            manifest: require(path.join(root, 'lib/vendor-manifest.json'))
+            context: config.root,
+            manifest: require(path.join(config.root, 'lib/vendor-manifest.json'))
         }),
         new HtmlWebpackPlugin({
-            template: path.join(root, 'src', 'index.html'),
+            template: path.join(config.src, 'index.html'),
             title: 'js-starter'
         }),
         new ExtractTextPlugin({
