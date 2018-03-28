@@ -6,10 +6,22 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./config');
+const fs = require('fs');
+
+const babelConfig = fs.readFileSync(path.join(config.root, '.babelrc'));
+const babelOption = JSON.parse(babelConfig);
 
 module.exports = {
     module: {
         rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /(node_modules|lib)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: babelOption
+                }
+            },
             {
                 test: /\.s?([ca])ss$/,
                 exclude: [
