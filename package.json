@@ -1,0 +1,18 @@
+{
+  "name": "@oy/http-module",
+  "version": "1.0.0",
+  "description": "基于Axios封装的请求库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo build",
+    "clean": "echo clean"
+  },
+  "keywords": [
+    "request",
+    "js",
+    "cancel"
+  ],
+  "author": "Ouyang",
+  "license": "ISC"
+}
