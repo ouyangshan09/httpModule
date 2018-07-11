@@ -1,5 +1,5 @@
 {
-  "name": "fore-end-starter",
+  "name": "@oy/http-module",
   "version": "1.0.0",
   "description": "javascript starter project",
   "main": "index.js",
@@ -22,7 +22,10 @@
     "url": "git+https://github.com/ouyangshan09/fore-end-starter.git"
   },
   "keywords": [
-    "js"
+    "js",
+    "http",
+    "cancel",
+    "axios"
   ],
   "author": "Ouyang",
   "license": "ISC",
