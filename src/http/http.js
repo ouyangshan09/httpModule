@@ -4,13 +4,27 @@
 import Axios from 'axios';
 import Qs from 'qs';
 
+function CancelPromise () {
+    //
+}
+
 class Http {
+    static CancelToken = Axios.CancelToken;
+
+    static getCancelMethod () {
+        return this.CancelToken.source();
+    }
+
     constructor (config = {}) {
+        this.$cancel = undefined;
         const defaultConfig = {
             timeout: 10000,
             withCredentials: true,
             validateStatus: status => status >= 200 && status < 300,
-            paramsSerializer: params => Qs.stringify(params, { arrayFormat: 'brackets' })
+            paramsSerializer: params => Qs.stringify(params, { arrayFormat: 'brackets' }),
+            cancelToken: new Http.CancelToken((cancel) => {
+                this.$cancel = cancel;
+            })
         };
         this.$http = Axios.create({...defaultConfig, ...config});
     }
@@ -53,6 +67,17 @@ class Http {
 
     request = (config) => {
         return this.$http.request(config);
+    }
+
+    isCancel = (...arg) => {
+        return Axios.isCancel(...arg);
+    }
+
+    /**
+     * 取消全部请求？
+    */
+    cancelAll = () => {
+        this.$cancel && this.$cancel();
     }
 }
 
