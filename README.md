@@ -1,56 +1,26 @@
-# 前端项目启动器(包含多语言)
+# http 请求封装库
 
-- javascript
-- typescript
-- react + js
-- react + ts
-- vue + js
-- vue + ts
+基于Axios 封装的http请求库
 
 ## 快速开始
 
 #### 1、项目安装
-- 执行 `npm install` 命令即可
+- 执行 `npm install` 命令
 
 #### 2、开发时调试
-- 执行 `npm start` 命令即可
+- 执行 `npm start` 命令
 
-#### 3、测试（尚未完善）
-- 执行 `npm run test` 命令即可
+#### 3、测试
+- 执行 `npm run test` 命令
 
 #### 4、项目构建
-- 执行 `npm run build` 命令即可
+- 执行 `npm run build` 命令
 
-#### 5、执行代码检查
-- 执行 `npm run lint` 命令即可
-
-#### 6、执行代码修复
-- 执行 `npm run lint:fix` 命令即可
-> 该修复只能修复对代码没影响的问题，有些需要手动修复
-
-#### 7、清理 dist 文件夹
+#### 5、清理 dist 文件夹
 - 执行 `npm run clean` 命令即可
 
-#### 8、预编译vendors库
+#### 6、预编译vendors库
 - 执行 `npm run dll` 命令即可
-
-#### 9、项目部署命令
-- 部署到开发环境
-```
-npm run deploy
-```
-- 部署到测试环境
-```
-npm run deploy -- -e test
-```
-- 部署到生产环境
-```
-npm run deploy -- -e prod
-```
-- 查看帮助信息
-```
-npm run deploy -- -h
-```
 
 ## 项目介绍
 
@@ -79,11 +49,3 @@ react                   react项目根目录
   ├─postcss.config.js   postcss配置文件
   ├─README.md
 ```
-
-### 具备特征
-
-
-### 待添加
-- reselect
-- docker
-- ……
