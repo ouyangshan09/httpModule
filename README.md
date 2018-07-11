@@ -15,7 +15,7 @@
 #### 2、开发时调试
 - 执行 `npm start` 命令即可
 
-#### 3、测试（尚未完善）
+#### 3、测试
 - 执行 `npm run test` 命令即可
 
 #### 4、项目构建
@@ -33,24 +33,6 @@
 
 #### 8、预编译vendors库
 - 执行 `npm run dll` 命令即可
-
-#### 9、项目部署命令
-- 部署到开发环境
-```
-npm run deploy
-```
-- 部署到测试环境
-```
-npm run deploy -- -e test
-```
-- 部署到生产环境
-```
-npm run deploy -- -e prod
-```
-- 查看帮助信息
-```
-npm run deploy -- -h
-```
 
 ## 项目介绍
 
