@@ -85,4 +85,5 @@ export function createHttp (config = {}) {
     return new Http(config);
 }
 
+export { bindUrls as BindURL } from './bindURL';
 export default Http;
