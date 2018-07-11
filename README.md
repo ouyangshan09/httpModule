@@ -11,11 +11,7 @@
 - 执行 `npm start` 命令
 
 #### 3、测试
-<<<<<<< HEAD
 - 执行 `npm run test` 命令
-=======
-- 执行 `npm run test` 命令即可
->>>>>>> 08aa9cd5d27f54c08b2d0a5f167893f1182e57e6
 
 #### 4、项目构建
 - 执行 `npm run build` 命令
