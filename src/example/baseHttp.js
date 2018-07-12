@@ -8,14 +8,6 @@
 import {
     createHttp
 } from '../http';
-import CODE from './code';
-
-/**
- * 处理相应码
-*/
-function handleResponseCode ({ code, data, ...args }) {
-    return CODE[code] && CODE[code](data, ...args);
-}
 
 class BaseHttp {
     /**
@@ -40,7 +32,7 @@ class BaseHttp {
         this.$http.addResponseInterceptor(function onSuccess (response) {
             const { data } = response;
             if (data) {
-                const { data, validate } = handleResponseCode(data);
+                const { data, validate } = this.getResponseHandle(data);
                 if (validate) {
                     return data;
                 }
@@ -64,6 +56,10 @@ class BaseHttp {
 
     getBaseURL () {
         throw new Error(`请重写该方法, 并返回基础url字符串`);
+    }
+
+    getResponseHandle (data) {
+        throw new Error(`请重写该方法, 并返回对象 - {data: object, validate: bool}`);
     }
 
     get (url, config = {}) {
