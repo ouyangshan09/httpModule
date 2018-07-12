@@ -58,5 +58,4 @@ export function handleResponseCode ({code, data, ...args}) {
         }
     }
     return { validate: false }
-    return {};
 }
