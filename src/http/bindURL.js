@@ -120,5 +120,7 @@ export function bindUrls (urls = {}) {
                 })(url, func)
             });
         });
+
+        return Module
     }
 }
