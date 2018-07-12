@@ -36,7 +36,6 @@ class BaseHttp {
                 if (validate) {
                     return serial;
                 }
-                console.log('serial:', serial)
             }
             return Promise.reject(new Error({ data }));
         }, function onFailure (errors) {

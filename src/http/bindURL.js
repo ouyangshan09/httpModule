@@ -7,6 +7,9 @@ import {
     mapParamsToPathVariables,
     methodPatternMapper
 } from './defaultMethodPatter';
+import {
+    isObject
+} from 'lodash';
 
 /**
  * 将Http请求绑定到模块方法中
@@ -57,6 +60,16 @@ function resolveMethodByName (moduleInstance, name) {
     return bindModuleMethod(requestMethod, moduleInstance, methodPatternMapper[requestMethod].sendData);
 }
 
+function resolveMethodByRequestMethod (moduleInstance, requestMethod) {
+    if (/^(post|put)$/.test(requestMethod)) {
+        return bindModuleMethod(requestMethod, moduleInstance, true);
+    } else if (/^(delete|get)$/.test(requestMethod)) {
+        return bindModuleMethod(requestMethod, moduleInstance, false);
+    } else {
+        throw new Error(`未知请求方法: ${requestMethod}`);
+    }
+}
+
 export function bindUrls (urls = {}) {
     return Module => {
         const keys = Object.keys(urls);
@@ -65,13 +78,25 @@ export function bindUrls (urls = {}) {
             return;
         }
 
-        const instance = Module.prototype || Module;
+        const instance = Module.prototype;
 
         keys.forEach(name => {
-            const url = urls[name];
+            let url = urls[name];
+            let requestMethod = undefined;
+            if (isObject(url)) {
+                requestMethod = url['method'];
+                url = url['url'];
+            }
 
             if (!url) {
                 throw new Error(`${name}()的地址无效`);
+            }
+
+            let func = undefined;
+            if (!requestMethod) {
+                func = resolveMethodByName(instance, name);   
+            } else {
+                func = resolveMethodByRequestMethod(instance, requestMethod);
             }
 
             // 根据urls对象动态定义模块方法
@@ -90,9 +115,10 @@ export function bindUrls (urls = {}) {
                                 innerUrl = mapParamsToPathVariables(innerUrl, params);
                             }
                         }
+                        console.log('thisArg:', thisArg);
                         return func && func.apply(this, [innerUrl].concat(args));
                     }
-                })(url, resolveMethodByName(instance, name))
+                })(url, func)
             });
         });
     }
