@@ -25,7 +25,6 @@ class BaseHttp {
     }
 
     constructor () {
-        super();
         this.$http = createHttp({
             baseURL: this.getBaseURL()
         });
