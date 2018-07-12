@@ -40,7 +40,7 @@ export default createCodeCofig({
         // option - 
         // message: '',
         // option - 默认为true
-        // validate: true
+        validate: false
     },
     703: {
         validate: false

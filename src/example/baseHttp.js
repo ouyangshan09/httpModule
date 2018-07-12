@@ -32,13 +32,13 @@ class BaseHttp {
         this.interceptorCode = this.$http.addResponseInterceptor(function onSuccess (response) {
             const { data } = response;
             if (data) {
-                console.log('this2:');
                 const { data: serial, validate } = self.getResponseHandle(data);
                 if (validate) {
                     return serial;
                 }
+                console.log('serial:', serial)
             }
-            return Promise.reject(new Error({ data: serial }));
+            return Promise.reject(new Error({ data }));
         }, function onFailure (errors) {
             return Promise.reject(errors);
         });
