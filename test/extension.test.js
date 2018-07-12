@@ -8,6 +8,8 @@ import CMSApi from '../src/example/cmsApi';
 
 describe(`extension function`, () => {
     test(`http request`, () => {
-        console.log('cmsApi:', CMSApi);
+        console.log('cmsApi 1:', CMSApi);
+        // CMSApi.getCoursewareList({}).then(res => console.log('res:', res));
+        console.log('cmsApi 2:', CMSApi.getCoursewareList({}));
     })
 })

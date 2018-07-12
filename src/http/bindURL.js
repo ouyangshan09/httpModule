@@ -41,7 +41,7 @@ function bindModuleMethod (method, moduleInstance, shouldSendData) {
 /**
  * 根据定义的模块方法名称，通过methodPatternMapper转换成绑定URL的模块方法
  * */
-function resolveMethodByName(moduleInstance, name) {
+function resolveMethodByName (moduleInstance, name) {
     let requestMethod = Object.keys(methodPatternMapper).filter(key => {
         let { pattern } = methodPatternMapper[key];
         if (!(pattern instanceof RegExp)) {
@@ -57,7 +57,7 @@ function resolveMethodByName(moduleInstance, name) {
     return bindModuleMethod(requestMethod, moduleInstance, methodPatternMapper[requestMethod].sendData);
 }
 
-export function bindUrls (urls) {
+export function bindUrls (urls = {}) {
     return Module => {
         const keys = Object.keys(urls);
         if (!keys.length) {
@@ -94,7 +94,6 @@ export function bindUrls (urls) {
                     }
                 })(url, resolveMethodByName(instance, name))
             });
-        })
+        });
     }
 }
-

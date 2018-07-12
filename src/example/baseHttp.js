@@ -62,38 +62,48 @@ class BaseHttp {
     }
 
     get (url, config = {}) {
-        return new Promise(this.$http.get(url, {
-            headers: BaseHttp.resolveHeaderConfig('get', this.defaultMehotdHeaders),
-            ...config
-        }))
+        return new Promise((resolve) => {
+            resolve(this.$http.get(url, {
+                headers: BaseHttp.resolveHeaderConfig('get', this.defaultMehotdHeaders),
+                ...config
+            }))
+        })
     }
 
     post (url, data = undefined, config = {}) {
-        return new Promise(this.$http.post(url, data, {
-            headers: BaseHttp.resolveHeaderConfig('post', this.defaultMehotdHeaders),
-            ...config
-        }))
+        return new Promise((resolve) => {
+            resolve(this.$http.post(url, data, {
+                headers: BaseHttp.resolveHeaderConfig('post', this.defaultMehotdHeaders),
+                ...config
+            }))
+        })
     }
 
     put (url, data = undefined, config = {}) {
-        return new Promise(this.$http.put(url, data, {
-            headers: BaseHttp.resolveHeaderConfig('put', this.defaultMehotdHeaders),
-            ...config
-        }))
+        return new Promise((resolve) => {
+            resolve(this.$http.put(url, data, {
+                headers: BaseHttp.resolveHeaderConfig('put', this.defaultMehotdHeaders),
+                ...config
+            }))
+        })
     }
 
     delete (url, config = {}) {
-        return new Promise(this.$http.delete(url, {
-            headers: BaseHttp.resolveHeaderConfig('delete', this.defaultMehotdHeaders),
-            ...config
-        }))
+        return new Promise((resolve) => {
+            resolve(this.$http.delete(url, {
+                headers: BaseHttp.resolveHeaderConfig('delete', this.defaultMehotdHeaders),
+                ...config
+            }))
+        })
     }
 
     request (config) {
-        return new Promise(this.$http.request({
-            headers: BaseHttp.resolveHeaderConfig(config.method, this.defaultMehotdHeaders),
-            ...config
-        }))
+        return new Promise((resolve) => {
+            resolve(this.$http.request({
+                headers: BaseHttp.resolveHeaderConfig(config.method, this.defaultMehotdHeaders),
+                ...config
+            }))
+        })
     }
 }
 
