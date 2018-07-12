@@ -115,7 +115,6 @@ export function bindUrls (urls = {}) {
                                 innerUrl = mapParamsToPathVariables(innerUrl, params);
                             }
                         }
-                        console.log('thisArg:', thisArg);
                         return func && func.apply(this, [innerUrl].concat(args));
                     }
                 })(url, func)
