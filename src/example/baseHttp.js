@@ -25,18 +25,20 @@ class BaseHttp {
     }
 
     constructor () {
+        const self = this;
         this.$http = createHttp({
             baseURL: this.getBaseURL()
         });
-        this.$http.addResponseInterceptor(function onSuccess (response) {
+        this.interceptorCode = this.$http.addResponseInterceptor(function onSuccess (response) {
             const { data } = response;
             if (data) {
-                const { data, validate } = this.getResponseHandle(data);
+                console.log('this2:');
+                const { data: serial, validate } = self.getResponseHandle(data);
                 if (validate) {
-                    return data;
+                    return serial;
                 }
             }
-            return Promise.reject(new Error({ data }));
+            return Promise.reject(new Error({ data: serial }));
         }, function onFailure (errors) {
             return Promise.reject(errors);
         });
