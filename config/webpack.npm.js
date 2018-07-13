@@ -17,7 +17,7 @@ spinner.start();
 const babelConfig = fs.readFileSync(path.join(config.root, '.babelrc'));
 const babelOption = JSON.parse(babelConfig);
 
-const config = {
+const NPMConfig = {
     entry: {
         index: path.join(config.src, 'http', 'index.js')
     },
@@ -49,7 +49,7 @@ const config = {
 
 rm(config.dist, err => {
     if (err) throw err;
-    webpack(config, (err, status) => {
+    webpack(NPMConfig, (err, status) => {
         spinner.stop();
         if (err) throw err;
         process.stdout.write(status.toString({
