@@ -10,6 +10,7 @@ const rm = require('rimraf');
 const ora = require('ora');
 const chalk = require('chalk');
 const path = require('path');
+const fs = require('fs');
 
 const spinner = ora('building for production...');
 spinner.start();
