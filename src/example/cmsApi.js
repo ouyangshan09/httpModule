@@ -19,6 +19,10 @@ class CMSApi extends BaseHttp {
         super();
     }
 
+    getCoursewareObject () {
+        return this.$http.get('/api/user/coursewares', { params: { page: 1} });
+    }
+
     getBaseURL () {
         return 'https://dev-cjcms-api.ecaicn.com';
     }
