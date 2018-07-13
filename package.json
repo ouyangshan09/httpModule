@@ -1,8 +1,9 @@
 {
-  "name": "@oy/http-module",
-  "version": "1.0.0",
+  "name": "@oys/http-module",
+  "version": "1.0.1",
   "description": "javascript starter project",
   "main": "index.js",
+  "filename": "dist/index.js",
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -20,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ouyangshan09/fore-end-starter.git"
+    "url": "git+https://github.com/ouyangshan09/httpModule.git"
   },
   "keywords": [
     "js",
@@ -31,9 +32,9 @@
   "author": "Ouyang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ouyangshan09/fore-end-starter/issues"
+    "url": "https://github.com/ouyangshan09/httpModule/issues"
   },
-  "homepage": "https://github.com/ouyangshan09/fore-end-starter#readme",
+  "homepage": "https://github.com/ouyangshan09/httpModule#README.md",
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "eslint": "^4.19.1",
