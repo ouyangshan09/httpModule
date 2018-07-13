@@ -109,3 +109,6 @@ class BaseHttp {
 }
 
 export default BaseHttp;
+export {
+    BaseHttp
+}

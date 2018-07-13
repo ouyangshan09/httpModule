@@ -4,10 +4,6 @@
 import Axios from 'axios';
 import Qs from 'qs';
 
-function CancelPromise () {
-    //
-}
-
 class Http {
     static CancelToken = Axios.CancelToken;
 
@@ -86,4 +82,5 @@ export function createHttp (config = {}) {
 }
 
 export { bindUrls as BindURL } from './bindURL';
+export { BaseHttp } from './baseHttp';
 export default Http;
