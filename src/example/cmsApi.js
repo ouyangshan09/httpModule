@@ -20,7 +20,7 @@ class CMSApi extends BaseHttp {
     }
 
     getCoursewareObject () {
-        return this.$http.get('/api/user/coursewares', { params: { page: 1} });
+        return this.$http.get('/api/user/coursewares', {params: { page: 2, pageSize: 10 }});
     }
 
     getBaseURL () {
