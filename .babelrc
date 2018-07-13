@@ -5,11 +5,11 @@
     ],
     "env": {
         "test": {
-          "presets": [["env"], "stage-0"],
-          "plugins": [
-              "transform-decorators-legacy",
-              "syntax-dynamic-import"
-          ]
+            "presets": [["env"], "stage-0"],
+            "plugins": [
+                "transform-decorators-legacy",
+                "syntax-dynamic-import"
+            ]
         }
     },
     "plugins": [
