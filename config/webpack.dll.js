@@ -7,7 +7,7 @@ const config = require('./config');
 
 module.exports = {
     entry: {
-        vendor: ['lodash', 'moment']
+        vendor: ['lodash', 'axios']
     },
     output: {
         path: path.join(config.root, 'lib'),

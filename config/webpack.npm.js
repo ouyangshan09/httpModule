@@ -25,7 +25,7 @@ const NPMConfig = {
     output: {
         publicPath: '/',
         path: config.dist,
-        filename: '[name].[hash].js'
+        filename: '[name].js'
     },
     module: {
         rules: [
