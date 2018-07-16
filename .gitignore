@@ -13,4 +13,5 @@
 /bash.exe.stackdump
 /package-lock.json
 /lib
-/dist
+/config
+
