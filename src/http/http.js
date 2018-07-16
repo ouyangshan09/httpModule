@@ -11,6 +11,10 @@ class Http {
         return this.CancelToken.source();
     }
 
+    static isCancel = (...arg) => {
+        return Axios.isCancel(...arg);
+    }
+
     constructor (config = {}) {
         this.$cancel = undefined;
         const defaultConfig = {
@@ -63,10 +67,6 @@ class Http {
 
     request = (config) => {
         return this.$http.request(config);
-    }
-
-    isCancel = (...arg) => {
-        return Axios.isCancel(...arg);
     }
 
     /**
