@@ -15,6 +15,10 @@ class Http {
         return Axios.isCancel(...arg);
     }
 
+    static createHttp (config = {}) {
+        return new Http(config);
+    }
+
     constructor (config = {}) {
         this.$cancel = undefined;
         const defaultConfig = {
@@ -77,10 +81,4 @@ class Http {
     }
 }
 
-export function createHttp (config = {}) {
-    return new Http(config);
-}
-
-export { bindUrls as BindURL } from './bindURL';
-export { BaseHttp } from './baseHttp';
 export default Http;
