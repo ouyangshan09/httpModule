@@ -2,7 +2,8 @@
   "name": "@oys/http-module",
   "version": "1.0.3",
   "description": "javascript starter project",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "index.d.ts",
   "files": [
     "dist",
     "src",

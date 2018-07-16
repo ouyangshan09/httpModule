@@ -236,7 +236,7 @@ const source = Http.getCancelMethod();
 $http.get(`/list/123/resource`, {
     cancelToken: source.token
 }).catch(e => {
-    if ($http.isCancel(e)) {
+    if (Http.isCancel(e)) {
         console.lg('Request Cancel');
     }
 })
