@@ -182,25 +182,25 @@ $http.request(config).then(res => res).catch(e => e);
 ## Response 模型
 ```
 {
-  // `data` is the response that was provided by the server
+  // `data` 是服务器提供的Response数据
   data: {},
 
-  // `status` is the HTTP status code from the server response
+  // `status` 是来自服务器Response的HTTP的状态码
   status: 200,
 
-  // `statusText` is the HTTP status message from the server response
+  // `statusText` 是来自服务器Response的Http状态码信息
   statusText: 'OK',
 
-  // `headers` the headers that the server responded with
-  // All header names are lower cased
+  // `headers` 是服务器Response的heade信息集合
+  // 所有 header 名字都是小写 
   headers: {},
 
-  // `config` is the config that was provided to `axios` for the request
+  // `config` 是由reqeust提供给`axios`的配置
   config: {},
 
-  // `request` is the request that generated this response
-  // It is the last ClientRequest instance in node.js (in redirects)
-  // and an XMLHttpRequest instance the browser
+  // `reqeust` 是创建该Response的reqeust
+  // 在Node.js环境中, 它是一个last ClientRequest实例
+  // 在Browser环境中, 它是一个XMLHttpRequest实例
   request: {}
 }
 ```
