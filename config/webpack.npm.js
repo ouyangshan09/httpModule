@@ -39,12 +39,7 @@ const NPMConfig = {
             }
         ]
     },
-    plugins: [
-        new webpack.DllReferencePlugin({
-            context: config.root,
-            manifest: require(path.join(config.root, 'lib/vendor-manifest.json'))
-        }),
-    ],
+    plugins: [],
     mode: 'production'
 };
 
