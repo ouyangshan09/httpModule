@@ -35,140 +35,134 @@ $http.request(config).then(res => res).catch(e => e);
 ## httpConfig 说明
 ```
 {
-  // `url` is the server URL that will be used for the request
+  // `url` 是用于请求服务器的地址, 即可以是相对地址, 需要配合baseURL。也可以是绝对地址
   url: '/user',
 
-  // `method` is the request method to be used when making the request
+  // `method` 是 请求使用的方法类型, 常用的get, post, put, delete, 默认get
   method: 'get', // default
 
-  // `baseURL` will be prepended to `url` unless `url` is absolute.
-  // It can be convenient to set `baseURL` for an instance of axios to pass relative URLs
-  // to methods of that instance.
+  // `baseURL` 如果url不是绝对地址, 那么baseURL会和url进行拼接。
+  // 可以设置baseURL来传递相对的url
+  // 例如: baseURL: 'https://some-domain.com/api/', url: '/list/{id}/resource'
+  // http-module 请求的url地址为: https://some-domain.com/api/list/{id}/resource
   baseURL: 'https://some-domain.com/api/',
 
-  // `transformRequest` allows changes to the request data before it is sent to the server
-  // This is only applicable for request methods 'PUT', 'POST', and 'PATCH'
-  // The last function in the array must return a string or an instance of Buffer, ArrayBuffer,
-  // FormData or Stream
-  // You may modify the headers object.
+  // `transformRequest` 允许每次将数据发送至服务器前对数据进行修改
+  // 它只适用 put, post, patch 请求方法
+  // 数组中的最后一个方法必须返回一个字符串或者一个Buffer, ArrayBuffer的实例
   transformRequest: [function (data, headers) {
     // Do whatever you want to transform the data
 
     return data;
   }],
 
-  // `transformResponse` allows changes to the response data to be made before
-  // it is passed to then/catch
+  // `transformResponse` 允许在请求响应后, 对响应的数据进行修改
   transformResponse: [function (data) {
     // Do whatever you want to transform the data
 
     return data;
   }],
 
-  // `headers` are custom headers to be sent
+  // `headers` 是要发送的自定义headers
   headers: {'X-Requested-With': 'XMLHttpRequest'},
 
-  // `params` are the URL parameters to be sent with the request
-  // Must be a plain object or a URLSearchParams object
+  // `params` 是要发送请求的URL参数
+  // 它应该是一个Plain Object 或者 一个 URLSearchParams Object
   params: {
     ID: 12345
   },
 
-  // `paramsSerializer` is an optional function in charge of serializing `params`
+  // `paramsSerializer` 是一个可选的函数, 它是负责序列化 `params` 参数
   // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
   paramsSerializer: function(params) {
     return Qs.stringify(params, {arrayFormat: 'brackets'})
   },
 
-  // `data` is the data to be sent as the request body
-  // Only applicable for request methods 'PUT', 'POST', and 'PATCH'
-  // When no `transformRequest` is set, must be of one of the following types:
-  // - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams
-  // - Browser only: FormData, File, Blob
-  // - Node only: Stream, Buffer
+  // `data` 是作为请求主体时发送的数据对象
+  // 只适用于 put, post, patch 请求方法
+  // 当没有设置 `transformRequest`时, data必须是以下类型:
+  // - string, Plain Object, ArrayBuffer, ArrayBufferView, URLSearchParams
+  // - 浏览器环境允许: FormData, File, Blob
+  // - Node环境允许: Stream, Buffer
   data: {
     firstName: 'Fred'
   },
 
-  // `timeout` specifies the number of milliseconds before the request times out.
-  // If the request takes longer than `timeout`, the request will be aborted.
+  // `timeout` 指定了请求超时前的毫秒。
+  // 如果这个请求超过了指定时间，它会被终止
   timeout: 1000,
 
-  // `withCredentials` indicates whether or not cross-site Access-Control requests
-  // should be made using credentials
+  // `withCredentials` 是跨站点访问控制的请求开关
   withCredentials: false, // default
 
-  // `adapter` allows custom handling of requests which makes testing easier.
-  // Return a promise and supply a valid response (see lib/adapters/README.md).
+  // `adatper` 允许自定义处理请求
+  // 返回一个 Promise 或者 一个有效的 Response (see lib/adapters/README.md)
   adapter: function (config) {
     /* ... */
   },
 
-  // `auth` indicates that HTTP Basic auth should be used, and supplies credentials.
-  // This will set an `Authorization` header, overwriting any existing
-  // `Authorization` custom headers you have set using `headers`.
+  // `auth` 表示应该使用Http Baseic auth, 并提供证书
+  // 它会设置 `Authorization` header 覆盖原来存在的
+  // `Authorization` 使用了自定义 headers 你应该使用 `headers`参数。
   auth: {
     username: 'janedoe',
     password: 's00pers3cret'
   },
 
-  // `responseType` indicates the type of data that the server will respond with
-  // options are 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
+  // `responseType` 表示服务器响应的数据类型
+  // 选项有: arraybuffer, blob, document, json, text, stream
   responseType: 'json', // default
 
-  // `responseEncoding` indicates encoding to use for decoding responses
-  // Note: Ignored for `responseType` of 'stream' or client-side requests
+  // `responseEncoding` 表示用于Response 解码类型
+  // 注意: 它会忽略 stream 类型的responseType 的客户端请求
   responseEncoding: 'utf8', // default
 
-  // `xsrfCookieName` is the name of the cookie to use as a value for xsrf token
+  // `xsrfCookieName` 是用于作为xsrf token值的名称
   xsrfCookieName: 'XSRF-TOKEN', // default
 
-  // `xsrfHeaderName` is the name of the http header that carries the xsrf token value
+  // `xsrfHeaderName` 是http header中携带xsrf token值的名字
   xsrfHeaderName: 'X-XSRF-TOKEN', // default
 
-  // `onUploadProgress` allows handling of progress events for uploads
+  // `onUploadProgress` 是处理上传进度事件的监听回调
   onUploadProgress: function (progressEvent) {
     // Do whatever you want with the native progress event
   },
 
-  // `onDownloadProgress` allows handling of progress events for downloads
+  // `onDownloadProgress` 是 处理下载进度事件的监听回调
   onDownloadProgress: function (progressEvent) {
     // Do whatever you want with the native progress event
   },
 
-  // `maxContentLength` defines the max size of the http response content in bytes allowed
+  // `maxContentLength` 定义http response 内容大小（单位字节）
   maxContentLength: 2000,
 
-  // `validateStatus` defines whether to resolve or reject the promise for a given
-  // HTTP response status code. If `validateStatus` returns `true` (or is set to `null`
-  // or `undefined`), the promise will be resolved; otherwise, the promise will be
-  // rejected.
+  // `validateStatus` 定义Http Response状态码是属于`Promise.resolve`或`Promise.reject`。
+  // 如果 `validateStatus` 返回 true(或者是`null`或`undefined`), Promise将会执行resolved,
+  // 否则 Promise将执行rejected
   validateStatus: function (status) {
     return status >= 200 && status < 300; // default
   },
 
-  // `maxRedirects` defines the maximum number of redirects to follow in node.js.
-  // If set to 0, no redirects will be followed.
+  // `maxRedirects` 定义在Node.js环境中最大重定向数量
+  // 如果设置0, 将不会重定向
   maxRedirects: 5, // default
 
-  // `socketPath` defines a UNIX Socket to be used in node.js.
+  // `socketPath` 在Node.js环境中定义一个UNIX Socket。
   // e.g. '/var/run/docker.sock' to send requests to the docker daemon.
-  // Only either `socketPath` or `proxy` can be specified.
-  // If both are specified, `socketPath` is used.
+  // 只能指定 `socketPath` 或 `proxy`。
+  // 如果2个都指定, 则`socketPath`优先被使用。
   socketPath: null, // default
 
-  // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
-  // and https requests, respectively, in node.js. This allows options to be added like
-  // `keepAlive` that are not enabled by default.
+  // `httpAgent`和`httpsAgent` 在Node.js环境定义一个自定义agent，被分别使用在执行http和https请求中
+  // `keepAlive` 默认未启用-
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 
-  // 'proxy' defines the hostname and port of the proxy server
-  // Use `false` to disable proxies, ignoring environment variables.
-  // `auth` indicates that HTTP Basic auth should be used to connect to the proxy, and
-  // supplies credentials.
-  // This will set an `Proxy-Authorization` header, overwriting any existing
-  // `Proxy-Authorization` custom headers you have set using `headers`.
+  // `proxy` 定义代理服务的hounane和prot
+  // 使用`false`可以禁用代理，忽略环境变量值
+  // `auth` 表示应该使用Http Basic auth来连接代理，并且提供证书
+  // 它会设置一个 `Proxy-Authorization` header，覆盖原有的存在
+  // `Proxy-Authorization` 是自定义headers你应该设置`headers`参数
   proxy: {
     host: '127.0.0.1',
     port: 9000,
@@ -178,8 +172,8 @@ $http.request(config).then(res => res).catch(e => e);
     }
   },
 
-  // `cancelToken` specifies a cancel token that can be used to cancel the request
-  // (see Cancellation section below for details)
+  // `cancelToken` 指定一个取消token，它可以用来取消request
+  // (有关详情，请看取消reqeust部分)
   cancelToken: new CancelToken(function (cancel) {
   })
 }
