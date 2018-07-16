@@ -223,6 +223,46 @@ $http.addRequestInterceptor(function onSuccess (config) {
 })
 ```
 
+## 取消请求
+你可以使用一个 cancel token 取消一个 reqeust
+
+你可以创建一个 cancel token, 使用`Http.getCancelMethod`, 代码如下所示:
+```
+import Http, { createHttp } from '@oys/http-module';
+
+const $http = createHttp({});
+const source = Http.getCancelMethod();
+
+$http.get(`/list/123/resource`, {
+    cancelToken: source.token
+}).catch(e => {
+    if ($http.isCancel(e)) {
+        console.lg('Request Cancel');
+    }
+})
+
+$http.post(`/user/forget`, {
+    name: 'xxxx',
+    password: '*****'
+}, {
+    cancelToken: source.token
+});
+
+source.cancel('Operation canceled by User');
+```
+你也可以创建一个执行CancelToken的执行函数，将 cancel token 传递出来
+```
+const CancelToken = Http.CancelToken
+let cancel = null;
+$http.get(`/user/111`, {
+    cancelToken: new CancelToken(function executor (c) {
+        cancel = c;
+    })
+});
+
+cancel()
+```
+
 ## 快速开发
 ```
 git clone git@github.com:ouyangshan09/httpModule.git 
