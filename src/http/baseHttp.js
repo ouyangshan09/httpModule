@@ -51,6 +51,9 @@ class BaseHttp {
         }
     }
 
+    /**
+     * 基础URL抽象
+    */
     getBaseURL () {
         throw new Error(`请重写该方法, 并返回基础url字符串`);
     }
