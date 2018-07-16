@@ -34,6 +34,8 @@ export interface HttpModalStatic extends HttpModuleInstance {
     isCancel(...args: Array<any>): boolean;
 }
 
+export function createHttp (config: AxiosRequestConfig): HttpModuleInstance {}
+
 declare const HttpModule: HttpModalStatic;
 
 export default HttpModule;
