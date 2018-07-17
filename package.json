@@ -1,6 +1,6 @@
 {
   "name": "@oys/http-module",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "javascript starter project",
   "main": "dist/index.js",
   "types": "index.d.ts",
