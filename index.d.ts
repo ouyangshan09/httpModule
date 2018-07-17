@@ -9,6 +9,8 @@ import {
     CancelTokenSource,
 } from 'axios';
 
+export declare function bindUrls<T>(urls: object): T;
+
 export interface ResponseHandle<T = any> {
     data: T;
     validate: boolean;
@@ -23,21 +25,15 @@ export interface HeaderConfig {
     request?: any;
 }
 
-export declare class HttpModule {
-    
-    constructor(config?: AxiosRequestConfig = {});
+export interface HttpModule {
+    (config?: AxiosRequestConfig = {}): HttpModuleInstance;
+    (url: string, config?: AxiosRequestConfig = {}): HttpModuleInstance;
 
     static CancelToken: CancelToken;
 
     static createCancelToken(): CancelTokenSource;
 
-    static create(): HttpModalConstructor;
-    
-}
-
-interface HttpModalConstructor {
-    new (config: AxiosRequestConfig): HttpModuleInstance;
-    new(url: string, config?: AxiosRequestConfig): HttpModuleInstance;
+    static create(config?: AxiosRequestConfig = {}): HttpModuleInstance;
 }
 
 export interface HttpModuleInstance {
@@ -53,24 +49,26 @@ export interface HttpModuleInstance {
     cancelAll(): void;
 }
 
-export declare class BaseHttp {
-    constructor(...args: Array<T>);
+declare const Http: HttpModule;
 
+export default Http;
+
+export abstract class BaseHttp {
     static resolveHeaderConfig(method: string, headers: HeaderConfig): any;
-}
 
-export interface BaseHttpInsantce {
-    (...args?: Array<any>): BaseHttpInsantce;
-    getBaseURL(): string;
-    getResponseHandle<T = any>(): ResponseHandle<T> | object;
+    private $http: HttpModuleInstance;
+    private defaultMehotdHeaders: object;
+
+    constructor () {}
+
+    abstract getBaseURL(): string;
+    abstract getResponseHandle<T = any>(): ResponseHandle<T> | object;
     get<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>;
     post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>;
     put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>;
     delete<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>;
     request<T = any>(config: AxiosRequestConfig): AxiosPromise<T>;
 }
-
-export declare function bindUrls<T> (urls: object): T;
 
 // export interface HttpModalStatic extends HttpModuleInstance {
 //     create(config?: AxiosRequestConfig): HttpModuleInstance;
