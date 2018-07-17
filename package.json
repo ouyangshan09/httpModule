@@ -19,7 +19,7 @@
     "start": "node ./config/webpack.local.js",
     "build": "npm run clean && node ./config/webpack.prod.js",
     "build:npm": "npm run clean && node ./config/webpack.npm.js",
-    "release:npm": "npm run build:npm && npm version patch && npm publish",
+    "release:npm": "npm run build:npm && npm version patch",
     "dll": "webpack --mode production --config ./config/webpack.dll.js --progress --profile --bail",
     "lint": "eslint src & stylelint \"src/**/*.scss\"",
     "lint:fix": "eslint src --fix & stylefmt -r \"src/**/*.scss\"",
