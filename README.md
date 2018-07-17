@@ -319,3 +319,7 @@ react                   react项目根目录
   ├─postcss.config.js   postcss配置文件
   ├─README.md
 ```
+
+### TODO
+ - [] 将@oys/http-module的静态方法和实例方法分离
+ - [] 将@oys/http-module转为typescript实现 
