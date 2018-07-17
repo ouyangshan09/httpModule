@@ -25,7 +25,10 @@ const NPMConfig = {
     output: {
         publicPath: '/',
         path: config.dist,
-        filename: '[name].js'
+        filename: '[name].js',
+        libraryTarget: 'umd',
+        library: 'httpModule',
+        sourceMapFilename: '[name].map'
     },
     module: {
         rules: [
@@ -40,6 +43,7 @@ const NPMConfig = {
         ]
     },
     plugins: [],
+    devtool: 'source-map',
     mode: 'production'
 };
 
