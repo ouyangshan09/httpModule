@@ -3,6 +3,7 @@
   "version": "1.0.14",
   "description": "javascript starter project",
   "main": "dist/index.js",
+  "types": "index.d.ts",
   "files": [
     "dist",
     "src",

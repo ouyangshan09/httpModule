@@ -29,13 +29,51 @@ export interface HttpModuleInstance {
 }
 
 export interface HttpModalStatic extends HttpModuleInstance {
+    create(config?: AxiosRequestConfig): HttpModuleInstance;
     CancelToken: CancelTokenStatic;
-    getCancelMethod(): CancelTokenSource;
+    createCancelToken(): CancelTokenSource;
     isCancel(...args: Array<any>): boolean;
 }
-
-export function createHttp (config: AxiosRequestConfig): HttpModuleInstance {}
 
 declare const HttpModule: HttpModalStatic;
 
 export default HttpModule;
+
+export interface ResponseHandle<T = any> {
+    data: T;
+    validate: boolean;
+}
+
+new XMLHttpRequest();
+
+export interface HeaderConfig {
+    common?: any;
+    get?: any;
+    post?: any;
+    put?: any;
+    delete?: any;
+    request?: any;
+}
+
+export interface BaseHttpInsantce {
+    (...args?: Array<any>): BaseHttpInsantce;
+    getBaseURL(): string;
+    getResponseHandle<T = any>(): ResponseHandle<T> | object;
+    get<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>;
+    post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>;
+    put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>;
+    delete<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>;
+    request<T = any>(config: AxiosRequestConfig): AxiosPromise<T>;
+}
+
+export interface AbstracBaseHttp extends BaseHttpInsantce {
+    resolveHeaderConfig(method: string, headers: HeaderConfig): any;
+}
+
+declare const BaseHttp: AbstracBaseHttp;
+
+export {
+    BaseHttp
+}
+
+export declare function bindUrls<T> (urls: object): T;

@@ -7,7 +7,7 @@ import Qs from 'qs';
 class Http {
     static CancelToken = Axios.CancelToken;
 
-    static getCancelMethod () {
+    static createCancelToken () {
         return this.CancelToken.source();
     }
 
@@ -15,7 +15,7 @@ class Http {
         return Axios.isCancel(...arg);
     }
 
-    static createHttp (config = {}) {
+    static create (config = {}) {
         return new Http(config);
     }
 
