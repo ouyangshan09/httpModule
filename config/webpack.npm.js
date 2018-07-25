@@ -44,7 +44,7 @@ const NPMConfig = {
     },
     plugins: [],
     devtool: 'source-map',
-    mode: 'production'
+    mode: 'development'
 };
 
 rm(config.dist, err => {
