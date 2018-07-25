@@ -1,5 +1,8 @@
-import Http from './http';
+import http, { Http } from './http';
 
 export { bindUrls } from './bindURL';
 export { BaseHttp } from './baseHttp';
-export default Http;
+export default http;
+export {
+    Http
+}
