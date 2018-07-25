@@ -81,4 +81,7 @@ class Http {
     // }
 }
 
-export default Http;
+export default Http.create();
+export {
+    Http
+}
