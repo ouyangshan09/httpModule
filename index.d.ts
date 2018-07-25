@@ -7,6 +7,7 @@ import {
     AxiosRequestConfig,
     CancelTokenStatic,
     CancelTokenSource,
+    CancelToken
 } from 'axios';
 
 export declare function bindUrls<T>(urls: object): T;
