@@ -7,7 +7,9 @@ import {
     AxiosRequestConfig,
     CancelTokenStatic,
     CancelTokenSource,
-    CancelToken
+    CancelToken,
+    Cancel,
+    
 } from 'axios';
 
 export declare function bindUrls<T>(urls: object): T;
@@ -48,6 +50,10 @@ export interface HttpModuleInstance {
     addResponseInterceptor(onResolve: Function, onRejected: Function): number;
     removeResponseInterceptor(id: number): void;
     cancelAll(): void;
+    Cancel: Cancel;
+    CancelToken: CancelToken;
+    isCancel: boolean;
+    create: (config?: AxiosRequestConfig) => HttpModuleInstance
 }
 
 declare const HttpInstance: HttpModuleInstance;
