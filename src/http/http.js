@@ -3,6 +3,7 @@
 */
 import Axios from 'axios';
 import Qs from 'qs';
+import { mrege } from 'lodash';
 
 class Http {
     static CancelToken = Axios.CancelToken;
@@ -23,13 +24,17 @@ class Http {
         this.$cancel = undefined;
         const defaultConfig = {
             timeout: 10000,
-            withCredentials: false,
+            withCredentials: true,
             validateStatus: status => status >= 200 && status < 300,
-            paramsSerializer: params => Qs.stringify(params, { arrayFormat: 'brackets' }),
-            cancelToken: new Http.CancelToken((cancel) => {
-                this.$cancel = cancel;
-            })
+            paramsSerializer: params => Qs.stringify(params, { arrayFormat: 'brackets' })
+            // cancelToken: new Http.CancelToken((cancel) => {
+            //     this.$cancel = cancel;
+            // })
         };
+        this.Cancel = Axios.Cancel;
+        this.CancelToken = Axios.CancelToken;
+        this.isCancel = Axios.isCancel;
+        this.create = config => Axios.create(mrege(defaultConfig, config));
         this.$http = Axios.create({...defaultConfig, ...config});
     }
 
