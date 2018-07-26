@@ -24,7 +24,7 @@ class Http {
         this.$cancel = undefined;
         const defaultConfig = {
             timeout: 10000,
-            withCredentials: true,
+            withCredentials: false,
             validateStatus: status => status >= 200 && status < 300,
             paramsSerializer: params => Qs.stringify(params, { arrayFormat: 'brackets' })
             // cancelToken: new Http.CancelToken((cancel) => {
@@ -34,7 +34,6 @@ class Http {
         this.Cancel = Axios.Cancel;
         this.CancelToken = Axios.CancelToken;
         this.isCancel = Axios.isCancel;
-        this.create = config => Axios.create(mrege(defaultConfig, config));
         this.$http = Axios.create({...defaultConfig, ...config});
     }
 

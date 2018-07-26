@@ -4,7 +4,7 @@
  * @version 1.0
 */
 
-import { createHttp } from './http';
+import { Http } from './http';
 
 class BaseHttp {
     /**
@@ -23,7 +23,7 @@ class BaseHttp {
 
     constructor () {
         const self = this;
-        this.$http = createHttp({
+        this.$http = Http.create({
             baseURL: this.getBaseURL()
         });
         this.interceptorCode = this.$http.addResponseInterceptor(function onSuccess (response) {
