@@ -50,9 +50,12 @@ export interface HttpModuleInstance {
     cancelAll(): void;
 }
 
-declare const Http: HttpModule;
+declare const Http: HttpModuleInstance;
 
 export default Http;
+export {
+    HttpModule as Http
+}
 
 export abstract class BaseHttp {
     static resolveHeaderConfig(method: string, headers: HeaderConfig): any;

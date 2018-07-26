@@ -1,8 +1,9 @@
-import http, { Http } from './http';
+import HttpInstance, { Http } from './http';
 
 export { bindUrls } from './bindURL';
 export { BaseHttp } from './baseHttp';
-export default http;
 export {
     Http
 }
+
+export default HttpInstance;
