@@ -49,11 +49,11 @@ export interface HttpModuleInstance {
     removeRequestInterceptor(id: number): void;
     addResponseInterceptor(onResolve: Function, onRejected: Function): number;
     removeResponseInterceptor(id: number): void;
-    cancelAll(): void;
-    Cancel: Cancel;
-    CancelToken: CancelToken;
-    isCancel: boolean;
-    create: (config?: AxiosRequestConfig) => HttpModuleInstance;
+    // cancelAll(): void;
+    // Cancel: Cancel;
+    // CancelToken: CancelToken;
+    // isCancel: boolean;
+    // create: (config?: AxiosRequestConfig) => HttpModuleInstance;
 }
 
 declare const HttpInstance: HttpModuleInstance;

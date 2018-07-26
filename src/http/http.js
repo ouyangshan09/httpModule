@@ -28,10 +28,10 @@ class Http {
             validateStatus: status => status >= 200 && status < 300,
             paramsSerializer: params => Qs.stringify(params, { arrayFormat: 'brackets' })
         };
-        this.Cancel = Axios.Cancel;
-        this.CancelToken = Axios.CancelToken;
-        this.isCancel = Axios.isCancel;
-        this.create = config => Axios.create(merge(defaultConfig, config));
+        // this.Cancel = Axios.Cancel;
+        // this.CancelToken = Axios.CancelToken;
+        // this.isCancel = Axios.isCancel;
+        // this.create = config => Axios.create(merge(defaultConfig, config));
         this.$http = Axios.create({...defaultConfig, ...config});
     }
 
