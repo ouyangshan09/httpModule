@@ -15,6 +15,12 @@ describe(`Http Instance fn`, () => {
             cancelToken: new Http.CancelToken(function executor (c) {
                 console.log('cancel:', c);
             })
-        }).then(res => console.log('res:', res)).catch(e => e)
+        }).then(res => console.log('res:')).catch(e => e)
+    })
+
+    test(`http create:`, () => {
+        console.log('instance:', HttpInstance.create);
+        const isntance = HttpInstance.create({});
+        console.log('instance:', isntance);
     })
 })

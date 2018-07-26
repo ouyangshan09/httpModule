@@ -3,7 +3,7 @@
 */
 import Axios from 'axios';
 import Qs from 'qs';
-import { mrege } from 'lodash';
+import merge from 'lodash/merge';
 
 class Http {
     static CancelToken = Axios.CancelToken;
@@ -27,13 +27,11 @@ class Http {
             withCredentials: false,
             validateStatus: status => status >= 200 && status < 300,
             paramsSerializer: params => Qs.stringify(params, { arrayFormat: 'brackets' })
-            // cancelToken: new Http.CancelToken((cancel) => {
-            //     this.$cancel = cancel;
-            // })
         };
         this.Cancel = Axios.Cancel;
         this.CancelToken = Axios.CancelToken;
         this.isCancel = Axios.isCancel;
+        this.create = config => Axios.create(merge(defaultConfig, config));
         this.$http = Axios.create({...defaultConfig, ...config});
     }
 

@@ -53,6 +53,7 @@ export interface HttpModuleInstance {
     Cancel: Cancel;
     CancelToken: CancelToken;
     isCancel: boolean;
+    create: (config?: AxiosRequestConfig) => HttpModuleInstance;
 }
 
 declare const HttpInstance: HttpModuleInstance;
