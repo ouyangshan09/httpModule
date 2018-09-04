@@ -284,7 +284,10 @@ npm i
 - 执行 `npm run test` 命令
 
 #### 4、项目构建
-- 执行 `npm run build` 命令
+- 执行 `npm run release:npm` 命令
+
+### 5、项目发布
+- 执行 `npm publish`
 
 #### 5、清理 dist 文件夹
 - 执行 `npm run clean` 命令
