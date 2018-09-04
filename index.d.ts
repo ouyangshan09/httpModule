@@ -71,7 +71,7 @@ export abstract class BaseHttp {
     private $http: HttpModuleInstance;
     private defaultMehotdHeaders: object;
 
-    constructor () {}
+    constructor (config?: AxiosRequestConfig) {}
 
     abstract getBaseURL(): string;
     abstract getResponseHandle<T = any>(): ResponseHandle<T> | object;
